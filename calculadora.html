@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Calculadora web</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+        <script type =text/javascript>
+            var cadena = "0";
+            var copia_cadena = "0";
+            var operador = "";
+
+            function copiar_cadena(string) {
+                copia_cadena = cadena;
+                cadena = "0";
+                operador = string;
+            }
+
+            function miFuncion(string) {
+                if (string != "") {
+                    cadena = cadena.concat(string);
+                }
+                document.getElementById("resultado").innerHTML = cadena;
+            }
+
+            function calcular() {
+                var numero1 = parseFloat(cadena);
+                var numero2 = parseFloat(copia_cadena);
+                var numero3 = 0;
+
+                switch (operador) {
+                    case '+':
+                        numero3 = numero1 + numero2;
+                        break;
+                    case '-':
+                        numero3 = numero2 - numero1;
+                        break;
+                    case '/':
+                        numero3 = numero2 / numero1;
+                        break
+                    case '*':
+                        numero3 = numero2 * numero1;
+                        break;
+
+                }
+
+
+
+                document.getElementById("resultado").innerHTML = numero3;
+
+            }
+
+        </script> 
+
+
+
+    </head>
+    <body>
+
+        <p id="resultado"></p>
+        <form action="javascript:calcular()">
+            <table border="1">
+                <tr>
+                    <td><input type="button" name="numero" value="1" onclick="miFuncion('1')" ></td>
+                    <td><input type="button" name="numero" value="2" onclick="miFuncion('2')" ></td>
+                    <td><input type="button" name="numero" value="3" onclick="miFuncion('3')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="numero" value="4" onclick="miFuncion('4')" ></td>
+                    <td><input type="button" name="numero" value="5" onclick="miFuncion('5')"></td>
+                    <td><input type="button" name="numero" value="6" onclick="miFuncion('6')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="numero" value="7" onclick="miFuncion('7')"></td>
+                    <td><input type="button" name="numero" value="8" onclick="miFuncion('8')"></td>
+                    <td><input type="button" name="numero" value="9" onclick="miFuncion('9')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="operador" value="+" onclick="copiar_cadena('+');"></td>
+                    <td><input type="button" name="operador" value="-" onclick="copiar_cadena('-')"></td>
+                    <td><input type="button" name="operador" value="/" onclick="copiar_cadena('/')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="operador" value="*" onclick="copiar_cadena('*')"></td>
+                    <td><input type="button" name="numero" value="0" onclick="miFuncion('0')"></td>
+                    <td><input type="button" name="punto" value="." onclick="miFuncion('.')"></td>
+                <tr>
+                    <td><input type="button" name="cosa" value="+/-" onclick=""></td>
+                    <td><input type="submit" name="igual" value="=" onsubmit="calcular()"></td>
+                </tr>
+
+
+            </table>
+        </form>
+    </body>
+</html>
